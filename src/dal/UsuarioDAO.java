@@ -16,12 +16,11 @@ public class UsuarioDAO implements intFDAO<Usuario> {
     private PreparedStatement stmt;
     private ResultSet rs;
 
-    public UsuarioDAO() {
-        this.conn = null;
-        this.stmt = null;
-        this.rs = null;
-    }
-
+    /**
+     * Metodo salvar (Insert) no banco de dados
+     * @param user  usuarios
+     * @return falso se não de erro, verdadiro contrario
+     */
     @Override
     public boolean salvar(Usuario user) {
         try {
@@ -43,6 +42,11 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         return true;
     }
 
+    /**
+     * Metodo alterar (Update) no banco de dados
+      * @param user usuario
+     * @return falso se não de erro, verdadiro contrario
+     */
     @Override
     public boolean alterar(Usuario user) {
         try {
@@ -65,6 +69,11 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         return true;
     }
 
+    /**
+     * Metodo excluir (delet) no banco de dados
+     * @param id chave primaria do regitro
+     * @return falso se não de erro, verdadiro contrario
+     */
     @Override
     public boolean excluir(int id) {
         try {
@@ -82,6 +91,10 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         return true;
     }
 
+    /**
+     * Metodo lista (select) no banco de dados
+     * @return todos os resgistros da tabela
+     */
     @Override
     public List<Usuario> lista() {
         List<Usuario> valores = new ArrayList<>();
@@ -113,6 +126,11 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         return null;
     }
 
+    /**
+     * Metodo consultID (select c/ parametro) no banco de dados
+     * @param id chave primeria do registro
+     * @return usuario
+     */
     public Usuario consultaID(int id){
         Usuario user = null;
         try {

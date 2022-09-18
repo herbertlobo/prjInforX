@@ -44,6 +44,7 @@ public class TelaLogin extends JFrame {
                 }
             }
         });
+
         ClassLoader loader = getClass().getClassLoader();
 
         try{
@@ -58,6 +59,8 @@ public class TelaLogin extends JFrame {
         }
 
         btnLogin.addActionListener(e -> logar());
+
+        // PAINEL DE ENTRADA
         JPanel pnEntrada = new JPanel(new MigLayout("", "40[][]30", "20[]10[]"));
         pnEntrada.add(new JLabel("Usuário"));
         pnEntrada.add(txtUsuario, "growx,pushx, wrap");
@@ -67,14 +70,17 @@ public class TelaLogin extends JFrame {
         JPanel pnDB = new JPanel(new MigLayout("", "[]", "[]"));
         pnDB.add(lblDB);
 
+        // PAINEL DOS BOTÕES
         JPanel pnBtn = new JPanel(new MigLayout("", "[]", "[]"));
         pnBtn.add(btnLogin);
 
+        // PAINEL PRINCPAL
         JPanel pnMain = new JPanel(new MigLayout("", "[][]", "[][]"));
         pnMain.add(pnEntrada, "span 2,grow, push, wrap");
         pnMain.add(pnDB, "align left");
         pnMain.add(pnBtn, "alignx right, aligny top");
 
+        // CONFIGURAÇÃO DA JANELA
         setContentPane(pnMain);
         setSize(355, 165);
         setResizable(false);
@@ -86,6 +92,7 @@ public class TelaLogin extends JFrame {
         SwingUtilities.invokeLater(() -> new TelaLogin().setVisible(true));
     }
 
+    // Metodo logar, verificar se exite o usuario e senha no banco de dados
     public void logar() {
         String sql = "SELECT * FROM dbinforx.tbusuarios WHERE login = ? AND senha = ?;";
         try {
@@ -98,6 +105,11 @@ public class TelaLogin extends JFrame {
             if (rs.next()) {
                 String nomeUser = rs.getString("usuario");
                 String perfil = rs.getString("perfil");
+
+                /* Instanciando TelaPrincipal
+                 * @param nomeUser (String) nome do usu&aacute;rio.
+                 * @param perfil  (String) perfil do usu&aacute;rio
+                 */
                 TelaPrincipal principal = new TelaPrincipal(nomeUser, perfil);
                 principal.setVisible(true);
                 dispose();

@@ -5,6 +5,11 @@ import java.sql.*;
 
 public class ModuloConecxao {
 
+
+    /**
+     * Metodo Conection (conecxão)
+     * @return retorna um String de conecxão
+     */
     public static Connection conector(){
 
         try{
@@ -19,6 +24,10 @@ public class ModuloConecxao {
         return null;
     }
 
+    /**
+     * Metodo para fechar a conecxão
+     * @param conn Connection
+     */
     public static void close(Connection conn){
         try{
             if(conn != null){
@@ -29,6 +38,11 @@ public class ModuloConecxao {
         }
     }
 
+    /**
+     * Metodo para fechar uma conexão e Um objeto que representa uma instrução SQL pré-compilada.
+     * @param conn  Connection
+     * @param stmt  PreparedStatemant
+     */
     public static void close(Connection conn, PreparedStatement stmt){
         try{
             if(stmt != null){
@@ -41,6 +55,13 @@ public class ModuloConecxao {
         }
     }
 
+    /**
+     * Metodo para fechar uma conexão, Um objeto que representa uma instrução SQL pré-compilada e
+     * retorno de um conjunto de resultados de banco de dados
+     * @param conn Connection
+     * @param stmt PreparedStatemant
+     * @param rs   ResultSet
+     */
     public static void close(Connection conn, PreparedStatement stmt, ResultSet rs){
         try{
             if( rs != null){

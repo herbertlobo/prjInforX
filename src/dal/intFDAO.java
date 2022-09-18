@@ -4,6 +4,9 @@ import java.util.List;
 
 public interface intFDAO <T>{
 
+    /**
+     *  Contrado dal (CRUD)
+     */
 
     boolean salvar(T t);
     boolean alterar(T t);
