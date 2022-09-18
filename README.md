@@ -1,5 +1,5 @@
 # prjInforX
-projeto de estudos java
+projeto de estudos java (IntelliJ IDEA)
 
 projeto inicial do
 
