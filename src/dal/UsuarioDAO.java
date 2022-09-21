@@ -24,8 +24,8 @@ public class UsuarioDAO implements intFDAO<Usuario> {
     @Override
     public boolean salvar(Usuario user) {
         try {
-            conn = ModuloConecxao.conector();
-            String ADD = "INSERT INTO dbinforx.tbusuarios(usuario, fone, login, senha, perfil) VALUES(?, ?, ?, ?, ?);";
+            conn = ModuloConecxao2.conector();
+            String ADD = "INSERT INTO tbusuarios(usuario, fone, login, senha, perfil) VALUES(?, ?, ?, ?, ?);";
             assert conn != null;
             stmt = conn.prepareStatement(ADD);
             stmt.setString(1, user.getUsuario());
@@ -50,8 +50,8 @@ public class UsuarioDAO implements intFDAO<Usuario> {
     @Override
     public boolean alterar(Usuario user) {
         try {
-            conn = ModuloConecxao.conector();
-            String UPD = "UPDATE dbinforx.tbusuarios SET usuario=?, fone=?,login=?, senha=?,perfil=? WHERE iduser=?";
+            conn = ModuloConecxao2.conector();
+            String UPD = "UPDATE tbusuarios SET usuario=?, fone=?,login=?, senha=?,perfil=? WHERE iduser=?";
             assert conn != null;
             stmt = conn.prepareStatement(UPD);
             stmt.setString(1, user.getUsuario());
@@ -77,8 +77,8 @@ public class UsuarioDAO implements intFDAO<Usuario> {
     @Override
     public boolean excluir(int id) {
         try {
-            conn = ModuloConecxao.conector();
-            String DEL = "DELETE FROM dbinforx.tbusuarios WHERE iduser=?;";
+            conn = ModuloConecxao2.conector();
+            String DEL = "DELETE FROM tbusuarios WHERE iduser=?;";
             assert conn != null;
             stmt = conn.prepareStatement(DEL);
             stmt.setInt(1, id);
@@ -99,8 +99,8 @@ public class UsuarioDAO implements intFDAO<Usuario> {
     public List<Usuario> lista() {
         List<Usuario> valores = new ArrayList<>();
         try {
-            conn = ModuloConecxao.conector();
-            String SLQ = "SELECT iduser, usuario, fone, login, senha, perfil FROM dbinforx.tbusuarios;";
+            conn = ModuloConecxao2.conector();
+            String SLQ = "SELECT iduser, usuario, fone, login, senha, perfil FROM tbusuarios;";
             assert conn != null;
             stmt = conn.prepareStatement(SLQ);
             rs = stmt.executeQuery();
@@ -121,7 +121,7 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na lista\n" + ex);
         } finally {
-            ModuloConecxao.close(conn, stmt);
+            ModuloConecxao2.close(conn, stmt);
         }
         return null;
     }
@@ -134,7 +134,7 @@ public class UsuarioDAO implements intFDAO<Usuario> {
     public Usuario consultaID(int id){
         Usuario user = null;
         try {
-            conn = ModuloConecxao.conector();
+            conn = ModuloConecxao2.conector();
             String SQL_ID = "SELECT * FROM dbinforx.tbusuarios WHERE iduser=?;";
             assert conn != null;
             stmt = conn.prepareStatement(SQL_ID);
@@ -155,7 +155,7 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na consultaID\n" + ex);
         } finally {
-            ModuloConecxao.close(conn, stmt);
+            ModuloConecxao2.close(conn, stmt);
         }
         return null;
     }

@@ -1,6 +1,7 @@
 package telas;
 
 import dal.ModuloConecxao;
+import dal.ModuloConecxao2;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -48,7 +49,7 @@ public class TelaLogin extends JFrame {
         ClassLoader loader = getClass().getClassLoader();
 
         try{
-            conn = ModuloConecxao.conector();
+            conn = ModuloConecxao2.conector();
             if (conn != null) {
                 lblDB = new JLabel(new ImageIcon(Objects.requireNonNull(loader.getResource("icones/dbok.png"))));
             } else {
@@ -94,9 +95,9 @@ public class TelaLogin extends JFrame {
 
     // Metodo logar, verificar se exite o usuario e senha no banco de dados
     public void logar() {
-        String sql = "SELECT * FROM dbinforx.tbusuarios WHERE login = ? AND senha = ?;";
+        String sql = "SELECT * FROM tbusuarios WHERE login = ? AND senha = ?;";
         try {
-            conn = ModuloConecxao.conector();
+            conn = ModuloConecxao2.conector();
             assert conn != null;
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, txtUsuario.getText());
