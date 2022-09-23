@@ -33,7 +33,7 @@ public class TlConsulta extends JInternalFrame {
                     TelaUsuario.txtFone.setText(user.getFone());
                     TelaUsuario.txtLogin.setText(user.getLogin());
                     TelaUsuario.txtSenha.setText(user.getSenha());
-                    TelaUsuario.cmbPerfil.setSelectedItem(user.getPerfil().toString());
+                    TelaUsuario.cmbPerfil.setSelectedItem(user.getPerfil());
                     dispose();
                 }
             }
