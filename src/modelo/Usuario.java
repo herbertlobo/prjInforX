@@ -15,6 +15,23 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
+    public Usuario(int iduser, String usuario, String fone, String login, String senha, String perfil) {
+        this.iduser = iduser;
+        this.usuario = usuario;
+        this.fone = fone;
+        this.login = login;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
+
+    public Usuario(String usuario, String fone, String login, String senha, String perfil) {
+        this.usuario = usuario;
+        this.fone = fone;
+        this.login = login;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
+
     public int getIduser() {
         return iduser;
     }

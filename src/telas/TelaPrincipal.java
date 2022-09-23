@@ -11,6 +11,7 @@ import java.util.Objects;
 public class TelaPrincipal extends JFrame {
 
     private JLabel lblUsuario;
+    public static JDesktopPane desktopPane;
 
     public TelaPrincipal(String user, String perfil) {
         super("X - Systema de cadastro de OS");
@@ -31,7 +32,7 @@ public class TelaPrincipal extends JFrame {
         lblData.setFont(font);
         ClassLoader loader = getClass().getClassLoader();
         JLabel lblLogoX = new JLabel(new ImageIcon(Objects.requireNonNull(loader.getResource("icones/x.png"))));
-        JDesktopPane desktopPane = new JDesktopPane();
+        desktopPane = new JDesktopPane();
         desktopPane.setBackground(new Color(85, 107, 47));
         JPanel pnLateral = new JPanel(new MigLayout("", "20px[]20px", "40px[]20px[]40px[]"));
         pnLateral.add(lblUsuario, "align center, wrap");
@@ -41,7 +42,7 @@ public class TelaPrincipal extends JFrame {
         pnPrincipal.add(desktopPane, "dock center");
         pnPrincipal.add(pnLateral, "dock east");
         setContentPane(pnPrincipal);
-        setJMenuBar(new MenuPrincipal(desktopPane, perfil));
+        setJMenuBar(new MenuPrincipal(perfil));
         setSize(917, 542);
         setResizable(false);
         setLocationRelativeTo(null);

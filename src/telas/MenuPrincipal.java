@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class MenuPrincipal extends JMenuBar {
 
-    public MenuPrincipal(JDesktopPane desktopPane, String perfil) {
+    public MenuPrincipal(String perfil) {
         // Menu Cadastro
         JMenu mnCadastro = new JMenu("Cadastros");
         JMenuItem mniClientes = new JMenuItem("Clientes");
@@ -19,7 +19,7 @@ public class MenuPrincipal extends JMenuBar {
         mniUsuario.addActionListener((ActionEvent actionEvent) -> {
             TelaUsuario telaUsuario = new TelaUsuario();
             telaUsuario.setVisible(true);
-            desktopPane.add(telaUsuario);
+            TelaPrincipal.desktopPane.add(telaUsuario);
         });
         mnCadastro.add(mniClientes);
         mnCadastro.add(mniOs);
@@ -39,8 +39,8 @@ public class MenuPrincipal extends JMenuBar {
         mniSobre.addActionListener(actionEvent -> {
             TelaSobre telaSobre = new TelaSobre();
             telaSobre.setVisible(true);
-            telaSobre.setLocation(desktopPane.getHeight() / 2 - telaSobre.getHeight() / 2, desktopPane.getHeight() / 2 - telaSobre.getHeight() / 2);
-            desktopPane.add(telaSobre);
+            telaSobre.setLocation(TelaPrincipal.desktopPane.getHeight() / 2 - telaSobre.getHeight() / 2, TelaPrincipal.desktopPane.getHeight() / 2 - telaSobre.getHeight() / 2);
+            TelaPrincipal.desktopPane.add(telaSobre);
         });
         mnAjuda.add(mniSobre);
 
