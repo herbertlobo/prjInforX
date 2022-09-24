@@ -1,7 +1,7 @@
 package telas;
 
-import dal.UsuarioDAO;
-import dal.UsuarioMTable;
+import dao.UsuarioDAO;
+import dao.UsuarioMTable;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 

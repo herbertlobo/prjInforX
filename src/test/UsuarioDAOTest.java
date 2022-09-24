@@ -1,6 +1,6 @@
 package test;
 
-import dal.UsuarioDAO;
+import dao.UsuarioDAO;
 import modelo.Usuario;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ class UsuarioDAOTest {
         user.setPerfil("user");
 
         UsuarioDAO dao = new UsuarioDAO();
-        if(!dao.salvar(user)){
+        if(dao.salvar(user)){
             System.out.println("Usuário salvo com sucesso...");
         }
     }
@@ -40,7 +40,7 @@ class UsuarioDAOTest {
     @Test
     void excluirTest(){
         UsuarioDAO dao = new UsuarioDAO();
-        if(!dao.excluir(3)){
+        if(dao.excluir(3)){
             System.out.println("Usuário excluido com sucesso...");
         }
     }

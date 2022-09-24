@@ -1,4 +1,4 @@
-use dbinforx;
+-- dbinforx;
 
 create table if not exists tbusuarios(
 	iduser serial  primary key,
@@ -19,7 +19,7 @@ FROM public.tbusuarios;
 
 
 UPDATE public.tbusuarios
-SET perfil='user'
+SET perfil='User'
 WHERE iduser = 2;
 
 

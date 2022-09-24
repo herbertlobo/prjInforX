@@ -1,4 +1,4 @@
-package dal;
+package dao;
 
 import modelo.Usuario;
 
@@ -33,13 +33,13 @@ public class UsuarioDAO implements intFDAO<Usuario> {
             stmt.setString(3, user.getLogin());
             stmt.setString(4, user.getSenha());
             stmt.setString(5, user.getPerfil());
-            return stmt.execute();
+            return !stmt.execute();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Salvar\n" + ex);
         } finally {
             ModuloConecxao.close(conn, stmt);
         }
-        return true;
+        return false;
     }
 
     /**
@@ -82,13 +82,13 @@ public class UsuarioDAO implements intFDAO<Usuario> {
             assert conn != null;
             stmt = conn.prepareStatement(DEL);
             stmt.setInt(1, id);
-            return stmt.execute();
+            return !stmt.execute();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Excluir\n" + ex);
         } finally {
             ModuloConecxao.close(conn, stmt);
         }
-        return true;
+        return false;
     }
 
     /**

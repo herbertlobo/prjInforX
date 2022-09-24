@@ -1,5 +1,7 @@
 package telas;
 
+import dao.ClienteDAO;
+import dao.ClienteMTable;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -11,6 +13,7 @@ import static java.util.Objects.requireNonNull;
 
 public class TelaCliente extends JInternalFrame {
 
+    private JTable table;
 
     public TelaCliente() {
         initComponets();
@@ -30,7 +33,8 @@ public class TelaCliente extends JInternalFrame {
         pnPesquisa.add(new JLabel("* Campos obrigatórios"),"align right");
 
         // PAINEL TABELA
-        JTable table = new JTable();
+        table = new JTable();
+        atualizarTabela();
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createTitledBorder("Tabela Clientes"));
 
@@ -84,5 +88,12 @@ public class TelaCliente extends JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+    }
+
+    private void atualizarTabela() {
+        ClienteDAO dao = new ClienteDAO();
+        if(dao.lista() != null){
+            table.setModel(new ClienteMTable(dao.lista()));
+        }
     }
 }

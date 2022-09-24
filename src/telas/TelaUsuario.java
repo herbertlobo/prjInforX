@@ -1,6 +1,6 @@
 package telas;
 
-import dal.UsuarioDAO;
+import dao.UsuarioDAO;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 
@@ -113,7 +113,7 @@ public class TelaUsuario extends JInternalFrame {
                     user.setPerfil(requireNonNull(cmbPerfil.getSelectedItem()).toString());
 
                     UsuarioDAO dao = new UsuarioDAO();
-                    if (!dao.salvar(user)) {
+                    if (dao.salvar(user)) {
                         JOptionPane.showMessageDialog(TelaUsuario.this, "Registro Salvo");
                         limparCampos();
                     }
@@ -170,7 +170,7 @@ public class TelaUsuario extends JInternalFrame {
         public void actionPerformed(ActionEvent actionEvent) {
             UsuarioDAO dao = new UsuarioDAO();
             if (!txtId.getText().trim().isEmpty()) {
-                if (!dao.excluir(Integer.parseInt(txtId.getText()))) {
+                if (dao.excluir(Integer.parseInt(txtId.getText()))) {
                     JOptionPane.showMessageDialog(TelaUsuario.this, "Registro Excluido");
                     limparCampos();
                 }

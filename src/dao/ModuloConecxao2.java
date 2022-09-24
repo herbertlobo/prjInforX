@@ -1,21 +1,25 @@
-package dal;
+package dao;
 
 import javax.swing.*;
 import java.sql.*;
 
-public class ModuloConecxao {
-
+public class ModuloConecxao2 {
 
     /**
-     * Metodo Conection (conecxão)
+     * Metodo Conection (conecxão) PostgreSQL
      * @return retorna um String de conecxão
      */
     public static Connection conector(){
 
-        try{
-            Class.forName("org.mariadb.jdbc.Driver");
+        final String DRIVER = "org.postgresql.Driver";
+        final String URL = "jdbc:postgresql://localhost:5432/dbinforx";
+        final String USER = "postgres";
+        final String PASS = "postgres";
 
-            return DriverManager.getConnection("jdbc:mariadb://localhost:3306/dbinforx","root","");
+        try{
+            Class.forName(DRIVER);
+
+            return DriverManager.getConnection(URL,USER,PASS);
         } catch (ClassNotFoundException cfe){
             JOptionPane.showMessageDialog(null,"Erro no Driver de Conecxão\n"+cfe,"Erro",JOptionPane.ERROR_MESSAGE);
         } catch (SQLException ex){

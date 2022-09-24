@@ -1,7 +1,7 @@
 package telas;
 
-import dal.ModuloConecxao;
-import dal.ModuloConecxao2;
+import dao.ModuloConecxao;
+import dao.ModuloConecxao2;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

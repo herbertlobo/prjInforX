@@ -6,19 +6,12 @@ import java.util.Objects;
 public class Cliente implements Serializable {
 
     private int idcli;
-    private String clinete;
+    private String cliente;
     private String endereco;
     private String telefone;
     private String email;
 
     public Cliente() {
-    }
-
-    public Cliente(String clinete, String endereco, String telefone, String email) {
-        this.clinete = clinete;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.email = email;
     }
 
     public int getIdcli() {
@@ -29,12 +22,12 @@ public class Cliente implements Serializable {
         this.idcli = idcli;
     }
 
-    public String getClinete() {
-        return clinete;
+    public String getCliente() {
+        return cliente;
     }
 
-    public void setClinete(String clinete) {
-        this.clinete = clinete;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public String getEndereco() {
@@ -65,7 +58,7 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Cliente{" +
                 "idcli=" + idcli +
-                ", clinete='" + clinete + '\'' +
+                ", clinete='" + cliente + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
