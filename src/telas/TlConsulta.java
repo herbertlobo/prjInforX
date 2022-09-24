@@ -10,13 +10,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 public class TlConsulta extends JInternalFrame {
 
     public TlConsulta() {
         super("Selecione o Registro");
 
-        JButton btnFechar = new JButton("Fachar");
+        ClassLoader loader = getClass().getClassLoader();
+        JButton btnFechar = new JButton("Fachar",new ImageIcon(Objects.requireNonNull(loader.getResource("icones/close_icon.png"))));
         btnFechar.addActionListener(new ActionFechar());
         UsuarioDAO dao = new UsuarioDAO();
         JTable tabelaUser = new JTable();

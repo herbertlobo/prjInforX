@@ -100,17 +100,24 @@ public class TelaUsuario extends JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
 
-            user = new Usuario();
-            user.setUsuario(txtNome.getText());
-            user.setFone(txtFone.getText());
-            user.setLogin(txtLogin.getText());
-            user.setSenha(new String(txtSenha.getPassword()));
-            user.setPerfil(requireNonNull(cmbPerfil.getSelectedItem()).toString());
-
-            UsuarioDAO dao = new UsuarioDAO();
-            if (!dao.salvar(user)) {
-                JOptionPane.showMessageDialog(TelaUsuario.this, "Registro Salvo");
+            // limpa os campos para um novo registro
+            if (!txtId.getText().trim().isEmpty()) {
                 limparCampos();
+            } else {
+                if(validarCampos()) {
+                    user = new Usuario();
+                    user.setUsuario(txtNome.getText());
+                    user.setFone(txtFone.getText());
+                    user.setLogin(txtLogin.getText());
+                    user.setSenha(new String(txtSenha.getPassword()));
+                    user.setPerfil(requireNonNull(cmbPerfil.getSelectedItem()).toString());
+
+                    UsuarioDAO dao = new UsuarioDAO();
+                    if (!dao.salvar(user)) {
+                        JOptionPane.showMessageDialog(TelaUsuario.this, "Registro Salvo");
+                        limparCampos();
+                    }
+                }
             }
         }
     }
@@ -128,28 +135,33 @@ public class TelaUsuario extends JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             user = new Usuario();
-            // VERIFICAR SE O CAMPO ID NÃO ESTA VAZIO
-            if (!txtId.getText().trim().isEmpty()) {
-                user.setIduser(Integer.parseInt(txtId.getText()));
-                user.setUsuario(txtNome.getText());
-                user.setFone(txtFone.getText());
-                user.setLogin(txtLogin.getText());
-                user.setSenha(new String(txtSenha.getPassword()));
-                user.setPerfil(requireNonNull(cmbPerfil.getSelectedItem()).toString());
 
-                UsuarioDAO dao = new UsuarioDAO();
-                // CONDIÇÃO PRA NÃO SER POSIVEL ALTERAR O REGISTRO ADMINISTRADOR
-                if(user.getIduser() != 1){
-                    if (!dao.alterar(user)) {
-                        JOptionPane.showMessageDialog(TelaUsuario.this, "Registro Alterado");
-                        limparCampos();
+                // VERIFICAR SE O CAMPO ID NÃO ESTA VAZIO
+                if (!txtId.getText().trim().isEmpty()) {
+                    // VERIFICAR SE TODOS OS CAMPOS ESTAO PREECHIDOS
+                    if(validarCampos()) {
+                        user.setIduser(Integer.parseInt(txtId.getText()));
+                        user.setUsuario(txtNome.getText());
+                        user.setFone(txtFone.getText());
+                        user.setLogin(txtLogin.getText());
+                        user.setSenha(new String(txtSenha.getPassword()));
+                        user.setPerfil(requireNonNull(cmbPerfil.getSelectedItem()).toString());
+
+                        UsuarioDAO dao = new UsuarioDAO();
+                        // CONDIÇÃO PRA NÃO SER POSIVEL ALTERAR O REGISTRO ADMINISTRADOR
+                        if (user.getIduser() != 1) {
+                            if (!dao.alterar(user)) {
+                                JOptionPane.showMessageDialog(TelaUsuario.this, "Registro Alterado");
+                                limparCampos();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(TelaUsuario.this, "Usuario Administrador não pode ser Alterado");
+                        }
                     }
-                }else{
-                    JOptionPane.showMessageDialog(TelaUsuario.this, "Usuario Administrador não pode ser Alterado");
+                } else {
+                    JOptionPane.showMessageDialog(TelaUsuario.this, "Informe o Id do Registro");
                 }
-            } else {
-                JOptionPane.showMessageDialog(TelaUsuario.this, "Informe o Id do Registro");
-            }
+
         }
     }
 
@@ -175,5 +187,13 @@ public class TelaUsuario extends JInternalFrame {
         txtSenha.setText(null);
         txtFone.setText(null);
         cmbPerfil.setSelectedIndex(0);
+    }
+    private boolean validarCampos(){
+        if(txtNome.getText().isEmpty() || txtFone.getText().isEmpty() || txtLogin.getText().isEmpty() || txtSenha.getPassword().length == 0){
+            JOptionPane.showMessageDialog(TelaUsuario.this,"Preecha todos os campos");
+            return false;
+        } else {
+            return true;
+        }
     }
 }

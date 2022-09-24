@@ -10,7 +10,7 @@ import java.util.List;
 public class UsuarioMTable extends AbstractTableModel {
 
 
-    private final String[] colunas = {"Cod.:","Usuario","Contato","Login","Perfil"};
+    private final String[] colunas = {"Usuário","Contato","Login","Perfil"};
     private static List<Usuario> valores;
 
     // CONSTRUTOR PRA INICIAR UMA LISTA VAZIA
@@ -41,11 +41,10 @@ public class UsuarioMTable extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {
         if(valores != null){
             switch (coluna){
-                case 0: return valores.get(linha).getIduser();
-                case 1: return valores.get(linha).getUsuario();
-                case 2: return valores.get(linha).getFone();
-                case 3: return valores.get(linha).getLogin();
-                case 4: return valores.get(linha).getPerfil();
+                case 0: return valores.get(linha).getUsuario();
+                case 1: return valores.get(linha).getFone();
+                case 2: return valores.get(linha).getLogin();
+                case 3: return valores.get(linha).getPerfil();
                 default:return null;
             }
         }
@@ -60,7 +59,7 @@ public class UsuarioMTable extends AbstractTableModel {
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex){
-            case 0: case 1: case 2: case 3: case 4: return String.class;
+            case 0: case 1: case 2: case 3: return String.class;
             default:return null;
         }
     }

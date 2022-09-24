@@ -7,12 +7,25 @@ import java.awt.event.KeyEvent;
 public class MenuPrincipal extends JMenuBar {
 
     public MenuPrincipal(String perfil) {
-        // Menu Cadastro
+
+        // ----- Menu Cadastro -----
         JMenu mnCadastro = new JMenu("Cadastros");
+
+
+        // Sub-Menu Cliente
         JMenuItem mniClientes = new JMenuItem("Clientes");
         mniClientes.setMnemonic(KeyEvent.VK_C);
+        mniClientes.addActionListener(actionEvent -> {
+            TelaCliente telaCliente = new TelaCliente();
+            telaCliente.setVisible(true);
+            TelaPrincipal.desktopPane.add(telaCliente);
+        });
+
+        // Sub-Menu OS
         JMenuItem mniOs = new JMenuItem("OS");
         mniOs.setMnemonic(KeyEvent.VK_O);
+
+        //Sub-menu Usuario
         JMenuItem mniUsuario = new JMenuItem("Usuários");
         mniUsuario.setMnemonic(KeyEvent.VK_U);
         mniUsuario.setEnabled(perfil.equalsIgnoreCase("admin"));
@@ -25,8 +38,9 @@ public class MenuPrincipal extends JMenuBar {
         mnCadastro.add(mniOs);
         mnCadastro.add(mniUsuario);
 
-        // Menu Relatório
+        // ----- Menu Relatório ------
         JMenu mnRelatorio = new JMenu("Relatório");
+
         JMenuItem mniServico = new JMenuItem("Serviços");
         mniServico.setEnabled(perfil.equalsIgnoreCase("admin"));
         mniServico.setMnemonic(KeyEvent.VK_S);

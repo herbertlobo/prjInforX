@@ -100,7 +100,7 @@ public class UsuarioDAO implements intFDAO<Usuario> {
         List<Usuario> valores = new ArrayList<>();
         try {
             conn = ModuloConecxao2.conector();
-            String SLQ = "SELECT iduser, usuario, fone, login, senha, perfil FROM tbusuarios;";
+            String SLQ = "SELECT iduser, usuario, fone, login, senha, perfil FROM tbusuarios ORDER BY usuario;";
             assert conn != null;
             stmt = conn.prepareStatement(SLQ);
             rs = stmt.executeQuery();

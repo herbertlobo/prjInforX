@@ -11,8 +11,8 @@ create table if not exists tbusuarios(
 
 INSERT INTO public.tbusuarios 
 (usuario, fone, login, senha, perfil)
-VALUES('Administrador', '(00) 00000-0000', 'admin', 'admin', 'admin'),
-('Herbert A Lobo', '(82) 987659687', 'herbert', 'lobo', 'admin');
+VALUES('Administrador', '(00) 00000-0000', 'admin', 'admin', 'Admin'),
+('Herbert A Lobo', '(82) 987659687', 'herbert', 'lobo', 'Admin');
 
 SELECT iduser, usuario, fone, login, senha, perfil
 FROM public.tbusuarios;
