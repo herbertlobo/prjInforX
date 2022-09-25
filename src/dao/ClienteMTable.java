@@ -9,7 +9,7 @@ import java.util.List;
 public class ClienteMTable extends AbstractTableModel {
 
     private final String[] colunas = {"Cliente","Endereço","Contato","E-mail"};
-    private List<Cliente> valores;
+    private static List<Cliente> valores;
 
     private ClienteMTable(){
         valores = new ArrayList<>();
@@ -17,7 +17,7 @@ public class ClienteMTable extends AbstractTableModel {
 
     public ClienteMTable(List<Cliente> valores) {
         this();
-        this.valores = valores;
+        ClienteMTable.valores = valores;
     }
 
     @Override
@@ -53,5 +53,9 @@ public class ClienteMTable extends AbstractTableModel {
             case 0: case 1: case 2: case 3: return String.class;
             default: return null;
         }
+    }
+
+    public static Cliente getCliente(int linha){
+        return valores.get(linha);
     }
 }

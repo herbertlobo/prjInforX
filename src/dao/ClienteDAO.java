@@ -38,7 +38,7 @@ public class ClienteDAO implements intFDAO<Cliente> {
             stmt.setString(2, cli.getEndereco());
             stmt.setString(3,cli.getTelefone());
             stmt.setString(4,cli.getEmail());
-            return !stmt.execute();
+            return stmt.execute();
         } catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Erro ao Salvar\n"+ex);
         } finally {
@@ -86,7 +86,7 @@ public class ClienteDAO implements intFDAO<Cliente> {
             assert conn != null;
             stmt = conn.prepareStatement(DEL);
             stmt.setInt(1,id);
-            return !stmt.execute();
+            return stmt.execute();
         } catch (SQLException ex){
             JOptionPane.showMessageDialog(null,"Erro ao Excluir\n"+ex);
         } finally {

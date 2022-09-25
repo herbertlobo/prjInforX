@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Cliente implements Serializable {
 
-    private int idcli;
+    private Integer idcli;
     private String cliente;
     private String endereco;
     private String telefone;
@@ -14,11 +14,11 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public int getIdcli() {
+    public Integer getIdcli() {
         return idcli;
     }
 
-    public void setIdcli(int idcli) {
+    public void setIdcli(Integer idcli) {
         this.idcli = idcli;
     }
 
